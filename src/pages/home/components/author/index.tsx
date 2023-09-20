@@ -23,7 +23,7 @@ const Author = () => {
           {bookList.map((item, index) => (
             <li className="pl-4" key={index}>
               <Link
-                className="hover:text-sky-700 hover:font-bold hover:text-large text-base  "
+                className="hover:text-sky-700 hover:font-bold hover:text-large text-base"
                 to={item.bookTitle}
               >
                 {item.bookTitle}
@@ -31,7 +31,7 @@ const Author = () => {
             </li>
           ))}
         </ul>
-        <Outlet />
+        <Outlet context={{ bookList }} />
       </div>
     </>
   );
