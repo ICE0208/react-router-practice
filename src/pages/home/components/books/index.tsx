@@ -7,8 +7,8 @@ const Books = () => {
 
   return (
     <>
-      <h1 className="text-2xl mt-2">{book}</h1>
-      <ul className="list-inside list-disc">
+      <h1 className="text-2xl mt-2 ml-4">{book}</h1>
+      <ul className="list-inside list-disc pl-8">
         <li>
           <NavLink
             to="chapters"
