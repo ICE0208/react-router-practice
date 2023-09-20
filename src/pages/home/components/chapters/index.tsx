@@ -13,7 +13,7 @@ const Chapters = () => {
       (bookInfo) => bookInfo.bookTitle === book,
     );
     if (!selectedBook) return;
-    const chapters = bookList[0].chapters;
+    const chapters = selectedBook[0].chapters;
     setChapterList(chapters);
   }, [book, bookList, chapterList, setChapterList]);
 
