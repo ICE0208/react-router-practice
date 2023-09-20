@@ -1,4 +1,4 @@
-import { Link, Outlet, useOutletContext, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useOutletContext, useParams } from 'react-router-dom';
 import { IBook } from '../../../../data';
 
 const Books = () => {
@@ -9,11 +9,21 @@ const Books = () => {
     <>
       <h1 className="text-2xl mt-2">{book}</h1>
       <ul className="list-inside list-disc">
-        <li className="hover:text-red-700 hover:font-bold hover:text-large text-base">
-          <Link to="chapters">Chapters</Link>
+        <li>
+          <NavLink
+            to="chapters"
+            className={({ isActive }) => getLinkClassnames(isActive)}
+          >
+            Chapters
+          </NavLink>
         </li>
-        <li className="hover:text-red-700 hover:font-bold hover:text-large text-base">
-          <Link to="characters">Characters</Link>
+        <li>
+          <NavLink
+            to="characters"
+            className={({ isActive }) => getLinkClassnames(isActive)}
+          >
+            Characters
+          </NavLink>
         </li>
       </ul>
       <hr className="m-2" />
@@ -21,5 +31,13 @@ const Books = () => {
     </>
   );
 };
+
+const getLinkClassnames = (isActive: boolean) => {
+  return (
+    defaultLinkClassnames + ' ' + (isActive ? 'text-red-700 font-bold' : null)
+  );
+};
+const defaultLinkClassnames =
+  'hover:text-red-700 hover:font-bold hover:text-large text-base';
 
 export default Books;

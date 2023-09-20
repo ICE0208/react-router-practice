@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface ILink {
   to: string;
@@ -15,13 +15,23 @@ const Header = () => (
     <ul className="list-disc list-inside text-xl">
       {links.map((item, index) => (
         <li key={index}>
-          <Link className="hover:text-blue-400" to={item.to}>
+          <NavLink
+            className={({ isActive }) => getLinkClassnames(isActive)}
+            to={item.to}
+          >
             {item.label}
-          </Link>
+          </NavLink>
         </li>
       ))}
     </ul>
   </div>
 );
+
+const getLinkClassnames = (isActive: boolean) => {
+  return (
+    defaultLinkClassnames + ' ' + (isActive ? 'text-blue-400 font-bold' : null)
+  );
+};
+const defaultLinkClassnames = 'hover:text-blue-400 hover:font-bold';
 
 export default Header;

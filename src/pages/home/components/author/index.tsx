@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { IBook, authorDatas } from '../../../../data';
 
 const Author = () => {
@@ -22,12 +22,12 @@ const Author = () => {
         <ul className="list-inside list-disc">
           {bookList.map((item, index) => (
             <li className="pl-4" key={index}>
-              <Link
-                className="hover:text-sky-700 hover:font-bold hover:text-large text-base"
+              <NavLink
+                className={({ isActive }) => getLinkClassnames(isActive)}
                 to={item.bookTitle}
               >
                 {item.bookTitle}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -36,5 +36,13 @@ const Author = () => {
     </>
   );
 };
+
+const getLinkClassnames = (isActive: boolean) => {
+  return (
+    defaultLinkClassnames + ' ' + (isActive ? 'text-sky-700 font-bold' : null)
+  );
+};
+const defaultLinkClassnames =
+  'hover:text-sky-700 hover:font-bold hover:text-large text-base';
 
 export default Author;
