@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
+import { NavLink, useMatch } from 'react-router-dom';
 
 interface ILink {
   to: string;
@@ -10,22 +11,46 @@ const links: ILink[] = [
   { to: '/about', label: 'About' },
 ];
 
-const Header = () => (
-  <div className="px-2 py-4">
-    <ul className="list-disc list-inside text-xl">
-      {links.map((item, index) => (
-        <li key={index}>
-          <NavLink
-            className={({ isActive }) => getLinkClassnames(isActive)}
-            to={item.to}
-          >
-            {item.label}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const Header = () => {
+  const [onHome, setOnHome] = useState<boolean>(true);
+  const onClick = useCallback((label: ILink['label']) => {
+    if (label === 'Home') {
+      setOnHome(true);
+      return;
+    }
+    setOnHome(false);
+  }, []);
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const onAbout = currentPath === '/about';
+    setOnHome(!onAbout);
+  }, []);
+
+  return (
+    <div className="px-2 py-4">
+      <ul className="list-disc list-inside text-xl">
+        {links.map((item, index) => (
+          <li key={index}>
+            <NavLink
+              onClick={() => {
+                onClick(item.label);
+              }}
+              className={({ isActive }) => {
+                if (item.label === 'Home') {
+                  return getLinkClassnames(onHome);
+                }
+                return getLinkClassnames(isActive);
+              }}
+              to={item.to}
+            >
+              {item.label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const getLinkClassnames = (isActive: boolean) => {
   return (
