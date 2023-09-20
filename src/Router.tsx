@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { About, Home } from './pages';
-import { Author, Books, Chapters } from './pages/home/components';
+import { Author, Books, Chapters, Characters } from './pages/home/components';
 import App from './App';
 
 const router = createBrowserRouter([
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
                   {
                     path: 'chapters',
                     element: <Chapters />,
+                  },
+                  {
+                    path: 'characters',
+                    element: <Characters />,
                   },
                 ],
               },

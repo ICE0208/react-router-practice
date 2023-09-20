@@ -12,9 +12,11 @@ const Books = () => {
         <li className="hover:text-red-700 hover:font-bold hover:text-large text-base">
           <Link to="chapters">Chapters</Link>
         </li>
-        <li>Characters</li>
+        <li className="hover:text-red-700 hover:font-bold hover:text-large text-base">
+          <Link to="characters">Characters</Link>
+        </li>
       </ul>
-      <hr />
+      <hr className="m-2" />
       <Outlet context={{ bookList }} />
     </>
   );
