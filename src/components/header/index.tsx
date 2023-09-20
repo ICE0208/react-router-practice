@@ -11,7 +11,7 @@ const links: ILink[] = [
 ];
 
 const Header = () => (
-  <div className="px-4 py-6">
+  <div className="px-2 py-4">
     <ul className="list-disc list-inside text-xl">
       {links.map((item, index) => (
         <li key={index} className="hover:text-blue-400">
