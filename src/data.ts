@@ -1,4 +1,4 @@
-export const authorData: IAuthorData[] = [
+export const authorDatas: IAuthorData[] = [
   {
     authorName: 'J.K.Rowling',
     books: [
@@ -19,12 +19,12 @@ export const authorData: IAuthorData[] = [
     authorName: 'J.R.R.Tolkien',
     books: [
       {
-        bookTitle: 'Harry Potter I',
+        bookTitle: 'Lord of The Rings I',
         chapters: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'],
         characters: ['Good Guy A', 'Good Guy B', 'Bad Guy A', 'Bad Guy B'],
       },
       {
-        bookTitle: 'Harry Potter II',
+        bookTitle: 'Lord of The Rings II',
         chapters: ['Chapter I', 'Chapter II', 'Chapter III', 'Chapter IV'],
         characters: ['Good Guy A', 'Good Guy B', 'Bad Guy A', 'Bad Guy B'],
       },
@@ -33,9 +33,9 @@ export const authorData: IAuthorData[] = [
 ];
 
 type ICharacter = string;
-type IChapter = string;
+export type IChapter = string;
 
-interface IBook {
+export interface IBook {
   bookTitle: string;
   chapters: IChapter[];
   characters: ICharacter[];
