@@ -1,16 +1,17 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { authorDatas } from '../../data';
 
 const Home = () => {
   return (
     <div>
       <h1 className="text-4xl mb-4">Best Seller Authors</h1>
-      {authors.map((item, index) => (
+      {authorDatas.map((authorInfo, index) => (
         <li key={index}>
           <NavLink
             className={({ isActive }) => getLinkClassnames(isActive)}
-            to={`/author/${item.name}`}
+            to={`/author/${authorInfo.authorName}`}
           >
-            {item.name}
+            {authorInfo.authorName}
           </NavLink>
         </li>
       ))}
@@ -23,11 +24,5 @@ const getLinkClassnames = (isActive: boolean) => {
   return defaultLinkClassnames + ' ' + (isActive ? 'font-bold' : null);
 };
 const defaultLinkClassnames = 'hover:font-bold';
-
-interface IAuthor {
-  name: string;
-}
-
-const authors: IAuthor[] = [{ name: 'J.K.Rowling' }, { name: 'J.R.R.Tolkien' }];
 
 export default Home;
